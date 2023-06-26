@@ -13,6 +13,6 @@ const app = express(); // creating an Express app
 const { PORT = 3000 } = process.env;
 app.use(bodyParser.json()).use(cors());
 
-app.get("/", (request, response) => response.send("Hello World!"));
+app.get("/", (request, response) => response.send("Hello World"));
 
 

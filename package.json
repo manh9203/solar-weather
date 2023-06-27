@@ -1,8 +1,8 @@
 {
   "name": "space-weather",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,6 +10,8 @@
     "preview": "vite preview",
     "test": "jest"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "prop-types": "^15.8.1",
     "react": "^18.2.0",

@@ -27,29 +27,30 @@ function SetDate({ startDate, setStartDate, endDate, setEndDate, callAPI }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <legend>Display any 7 days of Space Weather Information!</legend>
-      <label htmlFor="startDate">Start Date:</label>
-      <DatePicker
-        data-testid="start-date-picker"
-        id="startDate"
-        selected={startDate}
-        onChange={(date) => handleStartDateChange(date)}
-        dateFormat="MM/dd/yyyy"
-        required
-      />
-
-      <label htmlFor="endDate">End Date:</label>
-      <DatePicker
-      data-testid="end-date-picker"
-        id="endDate"
-        selected={endDate}
-        onChange={(date) => handleEndDateChange(date)}
-        dateFormat="MM/dd/yyyy"
-        data-test
-        required
-      />
-
+    <form onSubmit={handleSubmit} className="dateForm">
+      <div>
+        <label htmlFor="startDate">Start Date:</label>
+        <DatePicker
+          data-testid="start-date-picker"
+          id="startDate"
+          selected={startDate}
+          onChange={(date) => handleStartDateChange(date)}
+          dateFormat="MM/dd/yyyy"
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="endDate">End Date:</label>
+        <DatePicker
+          data-testid="end-date-picker"
+          id="endDate"
+          selected={endDate}
+          onChange={(date) => handleEndDateChange(date)}
+          dateFormat="MM/dd/yyyy"
+          data-test
+          required
+        />
+      </div>
       <button type="submit">Submit</button>
     </form>
   );
@@ -59,6 +60,7 @@ SetDate.propTypes = {
   endDate: PropTypes.object,
   setStartDate: PropTypes.func,
   setEndDate: PropTypes.func,
+  callAPI: PropTypes.func,
 };
 
 export default SetDate;

@@ -3,6 +3,7 @@ import SolarEventList from "./components/SolarEventList";
 import "./App.css";
 import PropTypes from "prop-types";
 import SetDate from "./components/SetDate";
+import sunLogo from "./assets/sun-svgrepo-com.svg"
 
 function App({ name, testMode }) {
 
@@ -15,7 +16,16 @@ function App({ name, testMode }) {
 
   return (
     <>
-      <h1>{name}</h1>
+      <header>
+        <img src={sunLogo} alt="Sun Logo" width={75}/>
+        <h1>{name}</h1>
+      </header>
+
+      <div className="useInfo">
+        <p>Ever wonder what space weather is like? Wonder no more!</p>
+        <p>Display any 7 days of Space Weather Information.</p>
+      </div>
+
       <SetDate
         startDate={startDate}
         setStartDate={setStartDate}

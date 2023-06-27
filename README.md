@@ -15,7 +15,7 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin ist-git@git.uwaterloo.ca:we-accelerate-292/space-weather.git
+git remote add origin https://git.uwaterloo.ca/we-accelerate-292/space-weather.git
 git branch -M main
 git push -uf origin main
 ```

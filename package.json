@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/highlight": "^7.22.5",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-datepicker": "^4.14.1",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {

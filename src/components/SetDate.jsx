@@ -40,16 +40,18 @@ function SetDate({ startDate, setStartDate, endDate, setEndDate, callAPI }) {
         />
       </div>
       <div>
-        <label htmlFor="endDate">End Date:</label>
-        <DatePicker
-          data-testid="end-date-picker"
-          id="endDate"
-          selected={endDate}
-          onChange={(date) => handleEndDateChange(date)}
-          dateFormat="MM/dd/yyyy"
-          data-test
-          required
-        />
+        
+      <label htmlFor="endDate">End Date:</label>
+      <DatePicker
+        id="endDate"
+        selected={endDate}
+        onChange={(date) => setEndDate(date)}
+        dateFormat="MM/dd/yyyy"
+        required
+        disabled={!startDate} // Disable end date until a start date is selected
+        minDate={startDate} // Restrict selection to be after or equal to the start date
+      />
+      
       </div>
       <button type="submit">Submit</button>
     </form>

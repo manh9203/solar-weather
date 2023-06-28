@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import SolarEventList from "./components/SolarEventList";
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
 
 function App(props) {
@@ -9,9 +10,6 @@ function App(props) {
     <h1>{props.name}</h1>
     <SolarEventList />
       
-    <h1>{props.name}</h1>
-    <SolarEventList />
-    
     </>
   )
 }

@@ -20,6 +20,7 @@ header {
   margin: 10px auto;
   padding: 10px;
   background-color: #33434faa;
+  border-radius: 5px;
 }
 .dateForm > div {
   display: flex;
@@ -33,7 +34,7 @@ header {
 .eventIcon {
   margin: 5px;
 }
-.eventIcon img {
+.legendGrid img, .eventIcon img {
   border-radius: 10px;
 }
 .temp {
@@ -46,7 +47,9 @@ header {
   flex-direction: column;
   align-items: center;
   background-color: #33434faa;
-  width: 100%;
+  width: calc(100% - 20px);
+  padding: 10px;
+  border-radius: 5px;
 }
 .legendGrid {
   display: grid;

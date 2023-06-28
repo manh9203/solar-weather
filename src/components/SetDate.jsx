@@ -2,32 +2,30 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-
-const SetDate = () => {
+const SetDate = (props) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
-  function handleStartDateChange(event){
-    setStartDate(event.target.value);
-  };
+  function handleStartDateChange(date) {
+    setStartDate(date);
+    setEndDate(new Date(date.getTime() + 6 * 24 * 60 * 60 * 1000)); // Set end date as 6 days after start date
+  }
 
-  function handleEndDateChange(event) {
-    setEndDate(event.target.value);
-  };
-
-  function handleSubmit(event){
+  function handleSubmit(event) {
     event.preventDefault();
-    // call the DONKI api with start and end dates over here
+    // Call the DONKI API with start and end dates here
 
-    //for testing
+    // Pass the selected dates back to the parent component
+    props.onDateChange(startDate, endDate);
+
+    // For testing
     console.log('Start Date:', startDate);
     console.log('End Date:', endDate);
 
-
-    //reset
-    setStartDate(null)
+    // Reset
+    setStartDate(null);
     setEndDate(null);
-  };
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -44,9 +42,11 @@ const SetDate = () => {
       <DatePicker
         id="endDate"
         selected={endDate}
-        onChange={handleEndDateChange}
+        onChange={(date) => setEndDate(date)}
         dateFormat="MM/dd/yyyy"
         required
+        disabled={!startDate} // Disable end date until a start date is selected
+        minDate={startDate} // Restrict selection to be after or equal to the start date
       />
 
       <button type="submit">Submit</button>

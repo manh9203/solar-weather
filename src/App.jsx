@@ -8,6 +8,9 @@ function App(props) {
     <>
     <h1>{props.name}</h1>
     <SolarEventList />
+      
+    <h1>{props.name}</h1>
+    <SolarEventList />
     
     </>
   )

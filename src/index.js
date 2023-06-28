@@ -2,6 +2,7 @@ import express from "express"; // importing the module
 import bodyParser from "body-parser";
 import cors from "cors";
 
+
 // Insert API Key here
 const API_KEY = 'UAMCxnwuf6K7Zh2XFXSL7OdftwkFpcMVOh0Lekkr';
 
@@ -15,6 +16,9 @@ app.use("/", (request, response, next) => {
     response.status(500).json({ error: "Missing API key. Oh no." });
   else next();
 });
+
+
+
 
 app.get("/", (request, response) => response.send("Space Weather!"));
 
@@ -190,6 +194,16 @@ app.get("/notifications", (request, response) => {
       response.json({ error: "shit" });
     });
 });
+
+app.post('/date-range', (request, response) => {
+  const { startDate, endDate } = request.body;
+  // Use startDate and endDate in your logic or API calls
+
+  // Example response
+  response.json({ message: 'Date range received on the server' });
+});
+
+
 
 // Listen on Port
 app.listen(

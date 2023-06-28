@@ -5,14 +5,14 @@ import PropTypes from "prop-types";
 function SetDate({ startDate, setStartDate, endDate, setEndDate, callAPI }) {
   function handleStartDateChange(date) {
     const actual = new Date(date);
-    actual.setDate(actual.getDate() + 7);
+    actual.setDate(actual.getDate() + 6);
     setEndDate(actual);
     setStartDate(date);
   }
 
   function handleEndDateChange(date) {
     const actual = new Date(date);
-    actual.setDate(actual.getDate() - 7);
+    actual.setDate(actual.getDate() - 6);
     setStartDate(actual);
     setEndDate(date);
   }

@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { fireEvent, render, wait } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import SetDate from "../src/components/SetDate";
 import "@testing-library/jest-dom";
 import "@testing-library/user-event";
@@ -29,7 +29,7 @@ describe("setDate functionality", () => {
     let eD = new Date(2023, 5, 21);
     const setSD = (x) => (sD = x);
     const setED = (x) => (eD = x);
-    const { getByDisplayValue, getByTestId, getByLabelText } = render(
+    const { getByDisplayValue, getByLabelText } = render(
       <SetDate
         startDate={sD}
         endDate={eD}

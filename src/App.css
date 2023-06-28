@@ -29,3 +29,35 @@ header {
   color: white;
   background-color: #33434f;
 }
+
+.eventIcon {
+  margin: 5px;
+}
+.eventIcon img {
+  border-radius: 10px;
+}
+.temp {
+  display: flex;
+  justify-content: center;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #33434faa;
+  width: 100%;
+}
+.legendGrid {
+  display: grid;
+  width: 100%;
+  gap: 5px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.legendGrid div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  border: 2px solid #33434fff;
+}

@@ -11,15 +11,15 @@ function SolarEventList({ startDate, endDate }) {
   useEffect(() => {
     let subscribed = true;
     async function update() {
-      const result = apiSample
-        .map((entries, ind) => entries.map((x) => cleanResponse(x, ind)))
-        .flat()
-        .sort((a, b) => Date.parse(a.time) - Date.parse(b.time));
-
-      // const result = (await callAPIs(startDate, endDate))
+      // const result = apiSample
       //   .map((entries, ind) => entries.map((x) => cleanResponse(x, ind)))
       //   .flat()
       //   .sort((a, b) => Date.parse(a.time) - Date.parse(b.time));
+
+     const result = (await callAPIs(startDate, endDate))
+       .map((entries, ind) => entries.map((x) => cleanResponse(x, ind)))
+       .flat()
+       .sort((a, b) => Date.parse(a.time) - Date.parse(b.time));
 
       setEvents(result);
     }

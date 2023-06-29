@@ -11,7 +11,9 @@ function SetDate({ startDate, setStartDate, endDate, setEndDate }) {
           data-testid="start-date-picker"
           id="startDate"
           selected={startDate}
-          onChange={(date) => setStartDate(date)}
+          onChange={(date) => {
+            setStartDate(date);
+            setEndDate(new Date(date.getTime() + 6 * 24 * 60 * 60 * 1000));}}
           dateFormat="MM/dd/yyyy"
           maxDate={endDate}
           required

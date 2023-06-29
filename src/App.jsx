@@ -65,8 +65,8 @@ function App({ name, testMode }) {
             <p>Solar Flare (FLR)</p>
           </div>
           <div>
-            <img src={gms} alt="GMS" width={50} height={50} />
-            <p>Geomagnetic Storm (GMS)</p>
+            <img src={gms} alt="GST" width={50} height={50} />
+            <p>Geomagnetic Storm (GST)</p>
           </div>
           <div>
             <img src={hss} alt="HSS" width={50} height={50} />

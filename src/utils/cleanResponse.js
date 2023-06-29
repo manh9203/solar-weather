@@ -27,8 +27,8 @@ function cleanResponse(obj, index) {
     case 4: //SEP
       return {
         type: "SEP",
-        time: obj["startTime"],
-        id: obj["gstID"],
+        time: obj["eventTime"],
+        id: obj["sepID"],
       };
     case 5: //MPC
     return {

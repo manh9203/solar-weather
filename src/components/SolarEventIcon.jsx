@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import cme from "../assets/icon-cme.jpg";
 import flr from "../assets/icon-flr.jpg";
@@ -12,7 +13,7 @@ import sep from "../assets/icon-sep.jpg";
 const iconArray = new Map([
   ["CME", cme],
   ["FLR", flr],
-  ["GMS", gms],
+  ["GST", gms],
   ["HSS", hss],
   ["IPS", ips],
   ["MPC", mpc],
@@ -26,17 +27,15 @@ function SolarEventIcon({ type, time, id, test }) {
   let month = String(eventDate.getMonth() + 1);
   month = month.padStart(2, "0");
   const day = String(eventDate.getDate()).padStart(2, "0");
-  
-  const startDate = `${year}-${month}-${day}`;
-  const endDate = `${year}-${month}-${day}`;
-  const apiURL = `https://kauai.ccmc.gsfc.nasa.gov/DONKI/WS/get/${type}?startDate=${startDate}&endDate=${endDate}`;
 
   return (
-    <a href={apiURL} target="_blank" rel="noopener noreferrer" className="eventIcon">
+    <Link to={`/event/${type}/${year}-${month}-${day}/${id}`} rel="noopener noreferrer" className="eventIcon">
       {test ? "Click me!" : null}
       <img src={iconArray.get(type)} alt={type} width={50} height={50} title={type} />
-      <span>{type} on {time}</span>
-    </a>
+      <span>
+        {type} on {time}
+      </span>
+    </Link>
   );
 }
 

@@ -40,9 +40,13 @@ function App({ name, testMode }) {
         endDate={endDate}
         setEndDate={setEndDate}
       />
+      {console.log(startDate)}
+      {console.log(endDate)}
       {startDate && endDate && (
         <SolarEventList startDate={startDate} endDate={endDate} /> //check start and end dates are not null
       )}
+
+      {console.log(startDate)}
       {!testMode ? null : (
         <div>
           <h6>Start Date: {startDate ? startDate.toDateString() : null}</h6>

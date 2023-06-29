@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import cme from "../assets/icon-cme.jpg";
 import flr from "../assets/icon-flr.jpg";
@@ -9,6 +9,7 @@ import ips from "../assets/icon-ips.jpg";
 import mpc from "../assets/icon-mnp.jpg";
 import rbe from "../assets/icon-rbe.png";
 import sep from "../assets/icon-sep.jpg";
+
 const iconArray = new Map([
   ["CME", cme],
   ["FLR", flr],
@@ -28,13 +29,16 @@ function SolarEventIcon({ type, time, id, test }) {
   const day = String(eventDate.getDate()).padStart(2, "0");
 
   return (
-    <Link to={`/event/${year}-${month}-${day}/${id}`} className="eventIcon">
+    <Link to={`/event/${type}/${year}-${month}-${day}/${id}`} rel="noopener noreferrer" className="eventIcon">
       {test ? "Click me!" : null}
       <img src={iconArray.get(type)} alt={type} width={50} height={50} title={type} />
-      <span>{type} on {time}</span>
+      <span>
+        {type} on {time}
+      </span>
     </Link>
   );
 }
+
 SolarEventIcon.propTypes = {
   type: PropTypes.string,
   time: PropTypes.string,

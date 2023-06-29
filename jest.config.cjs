@@ -1,7 +1,7 @@
 const config = {
     "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "<rootDir>/styleMock.js",
-      "\\.(gif|ttf|eot|svg)$": "<rootDir>/fileMock.js"
+      "\\.(gif|ttf|eot|svg|png|jpg)$": "<rootDir>/fileMock.js"
     }
 
 }

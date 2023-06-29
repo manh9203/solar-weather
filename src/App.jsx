@@ -43,7 +43,9 @@ function App({ name, testMode }) {
         setEndDate={setEndDate}
         callAPI={tempCall}
       />
-      <SolarEventList />
+      {startDate && endDate && (
+        <SolarEventList startDate={startDate} endDate={endDate} /> //check start and end dates are not null
+      )} 
       {!testMode ? null : (
         <div>
           <h6>Start Date: {startDate ? startDate.toDateString() : null}</h6>

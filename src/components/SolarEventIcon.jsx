@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import "./SolarEventDetails.css"; 
 
 import cme from "../assets/icon-cme.jpg";
 import flr from "../assets/icon-flr.jpg";

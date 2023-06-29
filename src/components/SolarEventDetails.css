@@ -1,0 +1,42 @@
+.solar-event-details {
+    background-color: #252b4d;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .event-info {
+    margin-bottom: 20px;
+  }
+  
+  .event-info p {
+    margin: 10px 0;
+  }
+  
+  .info-label {
+    font-weight: bold;
+  }
+  
+  .more-info p {
+    margin: 10px 0;
+  }
+  
+  .white-link {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #0476d9;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+  
+  .white-link:hover {
+    background-color: #034a99;
+  }
+  

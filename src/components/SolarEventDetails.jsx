@@ -1,49 +1,84 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import "./SolarEventDetails.css"; 
 
 const urlArray = new Map([
-  ["CME", { url: "CMEAnalysis", id: "associatedCMEID"}],
-  ["FLR", { url: "FLR", id: "flrID"}],
-  ["GST", { url: "GST", id: "gstID"}],
-  ["HSS", { url: "HSS", id: "hssID"}],
-  ["IPS", { url: "IPS", id: "activityID"}],
-  ["MPC", { url: "MPC", id: "mpcID"}],
-  ["RBE", { url: "RBE", id: "rbeID"}],
-  ["SEP", { url: "SEP", id: "sepID"}],
+  ["CME", { url: "CMEAnalysis", id: "associatedCMEID" }],
+  ["FLR", { url: "FLR", id: "flrID" }],
+  ["GST", { url: "GST", id: "gstID" }],
+  ["HSS", { url: "HSS", id: "hssID" }],
+  ["IPS", { url: "IPS", id: "activityID" }],
+  ["MPC", { url: "MPC", id: "mpcID" }],
+  ["RBE", { url: "RBE", id: "rbeID" }],
+  ["SEP", { url: "SEP", id: "sepID" }],
 ]);
 const API_KEY = "0r5TseDvW7S8F18sATetudOEigdxpkY1bekN9Vc3";
 
 function SolarEventDetails() {
   const { type, time, id } = useParams();
   const apiURL = `https://api.nasa.gov/DONKI/${urlArray.get(type).url}?startDate=${time}&endDate=${time}&api_key=${API_KEY}`;
-  const [ data, setData ] = useState({});
+  const [data, setData] = useState({});
+  const [link, setLink] = useState("");
+  const longType = type === "CME"
+  ? "Coronal Mass Ejection (CME)"
+  : type === "FLR"
+  ? "Solar Flare (FLR)"
+  : type === "GST"
+  ? "Geomagnetic Storm (GST)"
+  : type === "HSS"
+  ? "High Speed Stream (HSS)"
+  : type === "IPS"
+  ? "Interplanetary Shock (IPS)"
+  : type === "MPC"
+  ? "Magnetopause Crossing (MPC)"
+  : type === "RBE"
+  ? "Radiation Belt Enhancement (RBE)"
+  : type === "SEP"
+  ? "Solar Energetic Particle (SEP)"
+  : "";
 
-  useEffect( () => {
+  useEffect(() => {
     let subscribed = true;
 
-    async function callAPI (url) {
+    async function callAPI(url) {
       const response = await fetch(url);
       if (!response.ok) return []; //Most likely too many requests lol
       let data = await response.text();
       data = data ? JSON.parse(data) : [];
       data = data.filter((x) => x[urlArray.get(type).id] === id);
-      const [ entry ] = data
+      const [entry] = data;
       setData(entry);
+      setLink(entry.link);
     }
     if (subscribed) callAPI(apiURL);
-    return ( () => subscribed = false)
-  }, [apiURL, type, id])
+    return () => (subscribed = false);
+  }, [apiURL, type, id]);
 
   return (
-    <>
-      <p>Solar Event Type: {type}</p>
-      <p>Date: {time}</p>
-      <p>ID: {id}</p>
-      <p>{apiURL}</p>
-      {JSON.stringify(data, null, 2)}
-    </>
-  )
-}
+    <div className="solar-event-details">
+      <h2>Solar Event Details</h2>
+      <div className="event-info">
+        <p>
+          <span className="info-label">Solar Event Type:</span> {longType}
+        </p>
+        <p>
+          <span className="info-label">Date:</span> {time}
+        </p>
+        <p>
+          <span className="info-label">ID:</span> {id}
+        </p>
+      </div>
 
+      {link && (
+        <div className="more-info">
+          <p>Click below for more information:</p>
+          <a href={link} target="_blank" rel="noopener noreferrer" className="white-link">
+            More Information
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default SolarEventDetails;

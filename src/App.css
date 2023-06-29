@@ -11,7 +11,23 @@ header {
   margin: 0;
   text-align: center;
 }
+.white-link{
+  color:white;
+}
+.eventDate {
+  display: flex;
+  flex-direction: column;
+  color: white
+}
 
+.eventDateLine {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.href{
+  color: white
+}
 .dateForm {
   display: flex;
   flex-wrap: wrap;

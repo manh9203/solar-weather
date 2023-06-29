@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
+import callAPIs from "../utils/apiCaller";
 
 function SolarEventList({ startDate, endDate }) {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    const fetchSolarEvents = async () => {
+    callAPIs(startDate, endDate)
+    setEvents([{messageID: 2349, messageBody: 999}])
+  //   const fetchSolarEvents = async () => {
+  //     const promises = eventTypes.map(async (eventType) => {
+  //       const url = `https://api.nasa.gov/DONKI/${eventType}?startDate=${parseStartDate}&endDate=${parseEndDate}&type=all&api_key=${API_KEY}`;
+  //       const response = await fetch(url);
+  //       return await response.json()
+  //     });
 
-      
-      const eventTypes = ['CME', 'GST', 'IPS', 'FLR', 'SEP', 'MPC', 'RBE', 'HSS'];
-      const API_KEY = 'YOUR_API_KEY';
-      const promises = eventTypes.map((eventType) => {
-        const url = `https://api.nasa.gov/DONKI/${eventType}?startDate=${startDate}&endDate=${endDate}&type=all&api_key=${API_KEY}`;
-        return fetch(url).then((response) => response.json());
-      });
+  //     console.log(promises)
+  //     console.log(eventResponses);
+  //     const allEvents = eventResponses.reduce(
+  //       (acc, res) => [...acc, ...res],
+  //       []
+  //     );
+  //     setEvents(allEvents);
+  //   };
 
-      const eventResponses = await Promise.all(promises);
-      const allEvents = eventResponses.reduce((acc, response) => [...acc, ...response], []);
-      setEvents(allEvents);
-    };
-
-    fetchSolarEvents();
+  //   fetchSolarEvents();
   }, [startDate, endDate]);
 
   return (
@@ -38,7 +42,6 @@ function SolarEventList({ startDate, endDate }) {
   );
 }
 
-
 // Minimum Things needed
 // Coronal Mass Ejection Analysis: time21_5, associatedCMEID
 // Geomagnetic Storm: startTime, gstID
@@ -48,6 +51,5 @@ function SolarEventList({ startDate, endDate }) {
 // Magnetopause Crossing: eventTime, mpcID
 // Radiation Belt Enhancement: eventTIme, rbeID
 // High Speed Stream: eventTIme, hssID
-
 
 export default SolarEventList;

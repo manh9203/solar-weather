@@ -10,13 +10,6 @@ function SetDate({ startDate, setStartDate, endDate, setEndDate, callAPI }) {
     setStartDate(date);
   }
 
-  function handleEndDateChange(date) {
-    const actual = new Date(date);
-    actual.setDate(actual.getDate() - 6);
-    setStartDate(actual);
-    setEndDate(date);
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
     // call the DONKI api with start and end dates over here

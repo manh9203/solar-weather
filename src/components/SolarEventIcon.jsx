@@ -33,7 +33,7 @@ function SolarEventIcon({ type, time, id, test }) {
       {test ? "Click me!" : null}
       <img src={iconArray.get(type)} alt={type} width={50} height={50} title={type} />
       <span>
-        {type} on {time}
+        {type} on {year}-{month}-{day}
       </span>
     </Link>
   );

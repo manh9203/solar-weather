@@ -36,9 +36,9 @@ function SolarEventDetails() {
 
   return (
     <>
-      <p>{type}</p>
-      <p>{time}</p>
-      <p>{id}</p>
+      <p>Solar Event Type: {type}</p>
+      <p>Date: {time}</p>
+      <p>ID: {id}</p>
       <p>{apiURL}</p>
       {JSON.stringify(data, null, 2)}
     </>

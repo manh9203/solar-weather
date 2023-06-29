@@ -31,6 +31,7 @@ function SolarEventIcon({ type, time, id, test }) {
     <Link to={`/event/${year}-${month}-${day}/${id}`} className="eventIcon">
       {test ? "Click me!" : null}
       <img src={iconArray.get(type)} alt={type} width={50} height={50} title={type} />
+      <span>{type} on {time}</span>
     </Link>
   );
 }

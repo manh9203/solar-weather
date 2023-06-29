@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import "./App.css";
 
 import SetDate from "./components/SetDate";
-import SolarEventIcon from "./components/SolarEventIcon";
 import SolarEventList from "./components/SolarEventList";
 
 import sunLogo from "./assets/sun-svgrepo-com.svg";
@@ -17,8 +16,6 @@ import rbe from "./assets/icon-rbe.png";
 import sep from "./assets/icon-sep.jpg";
 
 function App({ name, testMode }) {
-  const tempCall = () => console.log("Calling API!");
-
   let x = new Date();
   x.setDate(x.getDate() - 6);
   const [startDate, setStartDate] = useState(x);
@@ -34,6 +31,7 @@ function App({ name, testMode }) {
       <div className="useInfo">
         <p>Ever wonder what space weather is like? Wonder no more!</p>
         <p>Display any 7 days of Space Weather Information.</p>
+        <p>Click icon for more details.</p>
       </div>
 
       <SetDate
@@ -41,60 +39,16 @@ function App({ name, testMode }) {
         setStartDate={setStartDate}
         endDate={endDate}
         setEndDate={setEndDate}
-        callAPI={tempCall}
       />
       {startDate && endDate && (
         <SolarEventList startDate={startDate} endDate={endDate} /> //check start and end dates are not null
-      )} 
+      )}
       {!testMode ? null : (
         <div>
           <h6>Start Date: {startDate ? startDate.toDateString() : null}</h6>
           <h6>End Date: {endDate ? endDate.toDateString() : null}</h6>
         </div>
       )}
-      <div className="temp">
-        <SolarEventIcon
-          type="CME"
-          time="2016-09-06T14:18Z"
-          id="2016-09-06T08:54:00-CME-001"
-        />
-        <SolarEventIcon
-          type="FLR"
-          time="2016-09-06T14:18Z"
-          id="2016-09-06T08:54:00-CME-001"
-        />
-        <SolarEventIcon
-          type="GMS"
-          time="2016-09-06T14:18Z"
-          id="2016-09-06T08:54:00-CME-001"
-        />
-        <SolarEventIcon
-          type="HSS"
-          time="2016-09-06T14:18Z"
-          id="2016-09-06T08:54:00-CME-001"
-        />
-        <SolarEventIcon
-          type="IPS"
-          time="2016-09-06T14:18Z"
-          id="2016-09-06T08:54:00-CME-001"
-        />
-        <SolarEventIcon
-          type="MPC"
-          time="2016-09-06T14:18Z"
-          id="2016-09-06T08:54:00-CME-001"
-        />
-        <SolarEventIcon
-          type="RBE"
-          time="2016-09-06T14:18Z"
-          id="2016-09-06T08:54:00-CME-001"
-        />
-        <SolarEventIcon
-          type="SEP"
-          time="2016-09-06T14:18Z"
-          id="2016-09-06T08:54:00-CME-001"
-        />
-      </div>
-
       <footer className="legend">
         <h2>Icon Meanings</h2>
         <div className="legendGrid">

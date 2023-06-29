@@ -33,13 +33,27 @@ header {
 
 .eventIcon {
   margin: 5px;
+  text-decoration: none;
+  background-color: #33434f60;
+  border-radius: 10px;
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  align-items: center;
+  font-size: 14px;
 }
 .legendGrid img, .eventIcon img {
   border-radius: 10px;
 }
 .temp {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+}
+.eventIcon span {
+  text-decoration: none;
+  color: white;
+
 }
 
 .legend {
@@ -63,4 +77,11 @@ header {
   gap: 5px;
   padding: 5px;
   border: 2px solid #33434fff;
+}
+
+.weatherList {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin: 20px 30px 100px 30px;
 }

@@ -1,55 +1,52 @@
 import { useEffect, useState } from "react";
 import callAPIs from "../utils/apiCaller";
+import cleanResponse from "../utils/cleanResponse";
+import { apiSample } from "../utils/sampleAPIdata";
+import PropTypes from "prop-types";
+import SolarEventIcon from "./SolarEventIcon";
 
 function SolarEventList({ startDate, endDate }) {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    callAPIs(startDate, endDate)
-    setEvents([{messageID: 2349, messageBody: 999}])
-  //   const fetchSolarEvents = async () => {
-  //     const promises = eventTypes.map(async (eventType) => {
-  //       const url = `https://api.nasa.gov/DONKI/${eventType}?startDate=${parseStartDate}&endDate=${parseEndDate}&type=all&api_key=${API_KEY}`;
-  //       const response = await fetch(url);
-  //       return await response.json()
-  //     });
+    let subscribed = true;
+    async function update() {
+      const result = apiSample
+        .map((entries, ind) => entries.map((x) => cleanResponse(x, ind)))
+        .flat()
+        .sort((a, b) => Date.parse(a.time) - Date.parse(b.time));
 
-  //     console.log(promises)
-  //     console.log(eventResponses);
-  //     const allEvents = eventResponses.reduce(
-  //       (acc, res) => [...acc, ...res],
-  //       []
-  //     );
-  //     setEvents(allEvents);
-  //   };
+      // const result = (await callAPIs(startDate, endDate))
+      //   .map((entries, ind) => entries.map((x) => cleanResponse(x, ind)))
+      //   .flat()
+      //   .sort((a, b) => Date.parse(a.time) - Date.parse(b.time));
 
-  //   fetchSolarEvents();
+      setEvents(result);
+    }
+
+    if (subscribed) update();
+    return () => {
+      subscribed = false;
+    };
   }, [startDate, endDate]);
 
   return (
     <div>
-      <h2>Weather Events:</h2>
+      <h2>Weather Events In Range:</h2>
       {events.length === 0 ? (
         <p>No weather events found.</p>
       ) : (
-        <ul>
-          {events.map((event) => (
-            <li key={event.messageID}>{event.messageBody}</li>
+        <div className="weatherList">
+          {events.map((event, ind) => (
+            <SolarEventIcon key={`${event.id}--ind${ind}`} {...event} />
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
 }
-
-// Minimum Things needed
-// Coronal Mass Ejection Analysis: time21_5, associatedCMEID
-// Geomagnetic Storm: startTime, gstID
-// Interplanetary Shock: eventTime, activityID
-// Solar Flare: beginTime, flrID
-// Solar Energetic Particle: eventTIme, sepID
-// Magnetopause Crossing: eventTime, mpcID
-// Radiation Belt Enhancement: eventTIme, rbeID
-// High Speed Stream: eventTIme, hssID
-
+SolarEventList.propTypes = {
+  startDate: PropTypes.object,
+  endDate: PropTypes.object,
+};
 export default SolarEventList;

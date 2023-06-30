@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
   "main": "index.js",
+  "homepage": "https://manh9203.github.io/solar-weather",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",

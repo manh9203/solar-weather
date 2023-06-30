@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App name="Solar Weather" testMode={false} />} />
+        <Route path="/" element={<App name="Solar Weather Explorer" testMode={false} />} />
         <Route path="/event/:type/:time/:id" element={<SolarEventDetails />} />
         <Route path="/CME" element={<CME />} />
         <Route path="/FLR" element={<FLR />} />

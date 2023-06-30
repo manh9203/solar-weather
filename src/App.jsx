@@ -24,14 +24,14 @@ function App({ name, testMode }) {
 
   return (
     <>
-      <header>
+      <div className = "header">
         <img src={sunLogo} alt="Sun Logo" width={75} />
         <h1>{name}</h1>
-      </header>
+      </div>
 
       <div className="useInfo">
-        <p>Discover real-time solar weather events with Solar Weather Explorer</p>
-        <p>Stay informed about the latest occurrences within your preferred time interval</p>
+        <p>Discover real-time solar weather events with Solar Weather Explorer.</p>
+        <p>Stay informed about the latest occurrences within your preferred time interval.</p>
         <p>Dive deeper into each event by clicking on its icon for detailed insights.</p>
       </div>
 

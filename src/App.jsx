@@ -30,9 +30,9 @@ function App({ name, testMode }) {
       </header>
 
       <div className="useInfo">
-        <p>Ever wonder what space weather is like? Wonder no more!</p>
-        <p>Display Space Weather Events that occur in any time interval.</p>
-        <p>Click icon for more details.</p>
+        <p>Discover real-time solar weather events with Solar Weather Explorer</p>
+        <p>Stay informed about the latest occurrences within your preferred time interval</p>
+        <p>Dive deeper into each event by clicking on its icon for detailed insights.</p>
       </div>
 
       <SetDate

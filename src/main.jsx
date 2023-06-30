@@ -14,7 +14,7 @@ import RBE from "./RBE.jsx";
 import SEP from "./SEP.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/solar-weather'>
       <Routes>
         <Route path="/" element={<App name="Solar Weather Explorer" testMode={false} />} />
         <Route path="/event/:type/:time/:id" element={<SolarEventDetails />} />

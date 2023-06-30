@@ -77,12 +77,12 @@ function SolarEventDetails() {
       {link && (
         <div className="more-info">
           <p>Click below to go to the official site for more information</p>
-          <a href={link} target="_blank" rel="noopener noreferrer" className="white-link">
+          <a href={link} target="_blank" rel="noopener noreferrer" className="nasa-link">
             More Information
           </a>
         </div>
       )}
-        <Link className="white-link" to="/">Return to Start</Link>
+        <Link className="nasa-link back" to="/">Return to Start</Link>
     </div>
   );
 }

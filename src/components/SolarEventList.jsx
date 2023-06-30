@@ -11,15 +11,15 @@ function SolarEventList({ startDate, endDate }) {
   useEffect(() => {
     let subscribed = true;
     async function update() {
-      const result = apiSample
+      // const result = apiSample
+      //   .map((entries, ind) => entries.map((x) => cleanResponse(x, ind)))
+      //   .flat()
+      //   .sort((a, b) => Date.parse(a.time) - Date.parse(b.time));
+
+      const result = (await callAPIs(startDate, endDate))
         .map((entries, ind) => entries.map((x) => cleanResponse(x, ind)))
         .flat()
         .sort((a, b) => Date.parse(a.time) - Date.parse(b.time));
-
-    //  const result = (await callAPIs(startDate, endDate))
-    //    .map((entries, ind) => entries.map((x) => cleanResponse(x, ind)))
-    //    .flat()
-    //    .sort((a, b) => Date.parse(a.time) - Date.parse(b.time));
 
       setEvents(result);
     }
@@ -29,12 +29,16 @@ function SolarEventList({ startDate, endDate }) {
       subscribed = false;
     };
   }, [startDate, endDate]);
-  const formattedStartDate = startDate ? startDate.toISOString().split("T")[0] : "";
+  const formattedStartDate = startDate
+    ? startDate.toISOString().split("T")[0]
+    : "";
   const formattedEndDate = endDate ? endDate.toISOString().split("T")[0] : "";
   return (
     <div>
-    <h2>Solar Weather Events from {formattedStartDate} to {formattedEndDate}</h2>      
-    {events.length === 0 ? (
+      <h2>
+        Solar Weather Events from {formattedStartDate} to {formattedEndDate}
+      </h2>
+      {events.length === 0 ? (
         <p>No weather events found.</p>
       ) : (
         <div className="weatherList">

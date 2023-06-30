@@ -30,7 +30,7 @@ function App({ name, testMode }) {
 
       <div className="useInfo">
         <p>Ever wonder what space weather is like? Wonder no more!</p>
-        <p>Display any 7 days of Space Weather Information.</p>
+        <p>Display Space Weather Events that occur in any time interval.</p>
         <p>Click icon for more details.</p>
       </div>
 

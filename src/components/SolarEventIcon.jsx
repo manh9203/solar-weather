@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import "./SolarEventDetails.css"; 
 
 import cme from "../assets/icon-cme.jpg";
 import flr from "../assets/icon-flr.jpg";
@@ -32,9 +33,10 @@ function SolarEventIcon({ type, time, id, test }) {
     <Link to={`/event/${type}/${year}-${month}-${day}/${id}`} rel="noopener noreferrer" className="eventIcon">
       {test ? "Click me!" : null}
       <img src={iconArray.get(type)} alt={type} width={50} height={50} title={type} />
-      <span>
-        {type} on {time}
-      </span>
+      <div className="eventDate">
+        <div className="eventDateLine">{type} on</div>
+        <div className="eventDateLine">{`${year}-${month}-${day}`}</div>
+      </div>
     </Link>
   );
 }

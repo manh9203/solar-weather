@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
-import "../Details.css";
+import "./SolarEventDetails.css"; 
 
 const urlArray = new Map([
   ["CME", { url: "CMEAnalysis", id: "associatedCMEID" }],
@@ -22,10 +21,26 @@ function SolarEventDetails() {
   // Do the following to minimize error from time zones
   startDate.setDate(startDate.getDate() - 1);
   endDate.setDate(endDate.getDate() + 1);
-  const apiURL = `https://api.nasa.gov/DONKI/${
-    urlArray.get(type).url
-  }?startDate=${startDate}&endDate=${endDate}&api_key=${API_KEY}`;
+  const apiURL = `https://api.nasa.gov/DONKI/${urlArray.get(type).url}?startDate=${startDate}&endDate=${endDate}&api_key=${API_KEY}`;
   const [data, setData] = useState({});
+  const [link, setLink] = useState("");
+  const longType = type === "CME"
+  ? "Coronal Mass Ejection (CME)"
+  : type === "FLR"
+  ? "Solar Flare (FLR)"
+  : type === "GST"
+  ? "Geomagnetic Storm (GST)"
+  : type === "HSS"
+  ? "High Speed Stream (HSS)"
+  : type === "IPS"
+  ? "Interplanetary Shock (IPS)"
+  : type === "MPC"
+  ? "Magnetopause Crossing (MPC)"
+  : type === "RBE"
+  ? "Radiation Belt Enhancement (RBE)"
+  : type === "SEP"
+  ? "Solar Energetic Particle (SEP)"
+  : "";
 
   useEffect(() => {
     let subscribed = true;
@@ -38,18 +53,26 @@ function SolarEventDetails() {
       data = data.filter((x) => x[urlArray.get(type).id] === id);
       const [entry] = data;
       setData(entry);
+      setLink(entry.link);
     }
     if (subscribed) callAPI(apiURL);
     return () => (subscribed = false);
   }, [apiURL, type, id]);
 
   return (
-    <>
-      <div className="header">
-        <h1>{type} Event</h1>
-        <h2>Occured {time}</h2>
+    <div className="solar-event-details">
+      <h2>Solar Event Details</h2>
+      <div className="event-info">
+        <p>
+          <span className="info-label">Solar Event Type:</span> {longType}
+        </p>
+        <p>
+          <span className="info-label">Date:</span> {time}
+        </p>
+        <p>
+          <span className="info-label">ID:</span> {id}
+        </p>
       </div>
-      <p>Here is what NASA has to say about it:</p>
       <div className="center">
         <table className="table">
           <tbody>
@@ -60,15 +83,20 @@ function SolarEventDetails() {
                 </tr>
               ))
             ) : (
-              <p>No Data Found.</p>
+              <p>Failed to Retrieve Data.</p>
             )}
           </tbody>
         </table>
       </div>
-      <Link to="/">
-        <button>Back to Start</button>
-      </Link>
-    </>
+      {link && (
+        <div className="more-info">
+          <p>Click below for more information:</p>
+          <a href={link} target="_blank" rel="noopener noreferrer" className="white-link">
+            More Information
+          </a>
+        </div>
+      )}
+    </div>
   );
 }
 

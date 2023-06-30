@@ -34,6 +34,7 @@ h2 {
   border-radius: 5px;
   display: inline-block;
   transition: background-color 0.3s ease;
+  margin: 10px 0px;
 }
 
 .white-link:hover {

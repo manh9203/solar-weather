@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import "./SolarEventDetails.css"; 
+import { Link } from "react-router-dom";
 
 const urlArray = new Map([
   ["CME", { url: "CMEAnalysis", id: "associatedCMEID" }],
@@ -73,29 +74,15 @@ function SolarEventDetails() {
           <span className="info-label">ID:</span> {id}
         </p>
       </div>
-      <div className="center">
-        <table className="table">
-          <tbody>
-            {data ? (
-              Object.entries(data).map((x, ind) => (
-                <tr key={ind}>
-                  <th>{x[0]}</th> <td>{JSON.stringify(x[1])}</td>
-                </tr>
-              ))
-            ) : (
-              <p>Failed to Retrieve Data.</p>
-            )}
-          </tbody>
-        </table>
-      </div>
       {link && (
         <div className="more-info">
-          <p>Click below for more information:</p>
+          <p>Click below to go to the official site for more information</p>
           <a href={link} target="_blank" rel="noopener noreferrer" className="white-link">
             More Information
           </a>
         </div>
       )}
+        <Link className="white-link" to="/">Return to Start</Link>
     </div>
   );
 }
